@@ -307,7 +307,7 @@
    const AREA_PACIENTE_URL = "https://integradaneuropsicologia.github.io/area-do-paciente-v2/";
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const FREQ5   = ["Nunca","Às vezes","Muitas Vezes","Sempre"];
+    const FREQ5   = ["Nunca","Raramente","Às Vezes","Frequentemente", "Sempre"];
     const SEVER4  = ["Não","Leve","Moderada","Grave", "Não se aplica"];
     const YESNO   = ["Sim","Não", "Não se aplica"];
     const YNP     = ["Sim","Não","Não sei", "Não se aplica"];
@@ -850,9 +850,13 @@ const FORM_QUESTIONS = [
 const INDICATORS_CONFIG = {
   Total: {
     label: "Pontuação total",
-    questions: [
-    "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55"
+    questions: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55"],
 
+  
+    cutoffs: [
+      { min: 1,  max: 10,  text: "Sem indícios de narcisismo" },
+      { min: 11, max: 20,  text: "Traços narcisista" },
+      { min: 21, max: Infinity, text: "Forte indícios " }
     ]
   }
 };
@@ -1049,6 +1053,17 @@ function buildUpdatedTestsFeitos(currentTestsFeitos, testCode, submittedAtIso) {
   };
 
   return next;
+}
+
+function interpretByCutoffs(score, cutoffs) {
+  if (!Number.isFinite(score) || !Array.isArray(cutoffs)) return null;
+
+  for (const rule of cutoffs) {
+    const min = (rule.min ?? -Infinity);
+    const max = (rule.max ?? Infinity);
+    if (score >= min && score <= max) return rule;
+  }
+  return null;
 }
 
     /**************************************************************
@@ -1596,7 +1611,15 @@ const resultsPayload = respostasLegiveis;
 
 // results_meta = SOMENTE soma dos indicadores configurados
 const resultsMetaPayload = Object.fromEntries(
-  Object.entries(scoring.indicators).map(([key, indicator]) => [key, indicator.sum])
+  Object.entries(scoring.indicators).flatMap(([key, indicator]) => {
+    const cfg = INDICATORS_CONFIG[key];
+    const rule = interpretByCutoffs(indicator.sum, cfg?.cutoffs);
+
+    return [
+      [key, indicator.sum], // soma
+      [`${key}_interpretacao`, rule?.text ?? null] // texto da faixa
+    ];
+  })
 );
 
     // 1) Revalida no patients (não confiar só na validação inicial)
