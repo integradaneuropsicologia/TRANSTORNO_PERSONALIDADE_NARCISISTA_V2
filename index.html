@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRANSTORNO_PERSONALIDADE_NARCISISTA</title>
+  <title>Questionário para Identificação de Transtorno de Personalidade Narcisista</title>
 
 <style>
   :root{
@@ -123,6 +123,32 @@
     gap:14px;
     margin-top:8px;
   }
+
+  /* === ERRO / OBRIGATÓRIAS SEM RESPOSTA === */
+.row.invalid{
+  border-color: rgba(220,38,38,.65) !important;
+  background:#fef2f2;
+}
+
+.row.invalid .field-label{
+  color: var(--err);
+}
+
+.row.invalid .choice-item{
+  border-color: rgba(220,38,38,.35);
+  background:#fff5f5;
+}
+
+.row.invalid .field-control,
+.row.invalid input:not([type="radio"]):not([type="checkbox"]),
+.row.invalid textarea,
+.row.invalid select{
+  border-color: rgba(220,38,38,.65);
+  box-shadow: 0 0 0 3px rgba(220,38,38,.10);
+}
+
+/* ajuda o scroll a “encaixar” melhor */
+.row{ scroll-margin-top: 16px; }
 
   .row{
     display:grid;
@@ -278,7 +304,7 @@
 <body>
   <div class="wrap">
     <div class="card">
-      <h1>Questionário para identificação do transtorno de personalidade narcisista</h1>
+      <h1>Questionário para Identificação de Transtorno de Personalidade Narcisista</h1>
   
 
       <div id="statusBox" class="status loading">Validando acesso...</div>
@@ -301,13 +327,10 @@
 
     const TEST_CODE_FIXO = "TRANSTORNO_PERSONALIDADE_NARCISISTA_V2";
 
-    
-
-    
    const AREA_PACIENTE_URL = "https://integradaneuropsicologia.github.io/area-do-paciente-v2/";
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const FREQ5   = ["Nunca","Raramente","Às Vezes","Frequentemente", "Sempre"];
+    const FREQ5   = ["Nunca/Raramente","Pouca frequência","Regular","Muito frequente", "Sempre/Quase sempre", "Não se aplica"];
     const SEVER4  = ["Não","Leve","Moderada","Grave", "Não se aplica"];
     const YESNO   = ["Sim","Não", "Não se aplica"];
     const YNP     = ["Sim","Não","Não sei", "Não se aplica"];
@@ -318,11 +341,12 @@
  **************************************************************/
 const SCALE_SCORE_MAPS = {
   FREQ5: {
-    "Nunca": 0,
-    "Raramente": 1,
-    "Às vezes": 2,
-    "Frequentemente": 3,
-    "Sempre": 4
+    "Nunca/Raramente": 0,
+    "Pouca frequência":1,
+    "Regular": 2,
+    "Muito frequente": 3,
+     "Sempre/Quase sempre": 4,
+     "Não se aplica": null
    
   },
 
@@ -339,8 +363,8 @@ const SCALE_SCORE_MAPS = {
     "Não se aplica": null
   },
   YNP: {
-    "Não": 0,
-    "Sim": 1,
+    "Não": null,
+    "Sim": null,
     "Não sei": null,
     "Não se aplica": null
   }
@@ -847,19 +871,7 @@ const FORM_QUESTIONS = [
   }
 ];
 
-const INDICATORS_CONFIG = {
-  Total: {
-    label: "Pontuação total",
-    questions: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55"],
-
-  
-    cutoffs: [
-      { min: 1,  max: 10,  text: "Sem indícios de narcisismo" },
-      { min: 11, max: 20,  text: "Traços narcisista" },
-      { min: 21, max: Infinity, text: "Forte indícios " }
-    ]
-  }
-};
+const INDICATORS_CONFIG = {};
 
     /**************************************************************
      * HELPERS
@@ -1166,12 +1178,14 @@ function normalizeOption(option) {
 function renderDynamicForm(questions = []) {
   const form = $("testForm");
   form.innerHTML = "";
+  form.noValidate = true;
 
   questions.forEach((q, index) => {
     const row = document.createElement("div");
     row.className = "row";
 
     const fieldName = getFieldName(q, index);
+    row.dataset.field = fieldName; 
     const fieldId = `field_${fieldName}_${index}`;
 
     const label = document.createElement("label");
@@ -1195,6 +1209,7 @@ function renderDynamicForm(questions = []) {
       if (q.step !== undefined) input.step = q.step;
       row.appendChild(input);
       input.className = "field-control";
+      
     }
 
     // TEXTAREA
@@ -1373,6 +1388,17 @@ function buildResultsPerguntasRespostas(questions, answersObj) {
 
   return respostas;
 }
+// === POLYFILL CSS.escape (salva em alguns mobiles/webviews) ===
+(function () {
+  if (!window.CSS) window.CSS = {};
+  if (typeof window.CSS.escape !== "function") {
+    window.CSS.escape = function (value) {
+      return String(value).replace(/[^a-zA-Z0-9_\-]/g, function (ch) {
+        return "\\" + ch;
+      });
+    };
+  }
+})();
 
 
 function formDataToObject(formEl) {
@@ -1581,12 +1607,119 @@ function buildScoringResult(questions, answersObj, indicatorsConfig) {
     indicators          // somas dos domínios
   };
 }
+
+function clearInvalidUI(formEl){
+  formEl.querySelectorAll(".row.invalid").forEach(r => r.classList.remove("invalid"));
+  formEl.querySelectorAll('[aria-invalid="true"]').forEach(el => el.removeAttribute("aria-invalid"));
+}
+
+function isRequiredAnswered(q, index, formEl){
+  if (!q?.required) return true;
+
+  const fieldName = getFieldName(q, index);
+  const type = String(q.type || "text").toLowerCase();
+
+  if (type === "radio") {
+    return !!formEl.querySelector(`input[type="radio"][name="${CSS.escape(fieldName)}"]:checked`);
+  }
+
+  if (type === "checkbox") {
+    if (Array.isArray(q.options) && q.options.length > 0) {
+      return formEl.querySelectorAll(`input[type="checkbox"][name="${CSS.escape(fieldName)}"]:checked`).length > 0;
+    }
+    const el = formEl.querySelector(`input[type="checkbox"][name="${CSS.escape(fieldName)}"]`);
+    return !!el && el.checked;
+  }
+
+  const el = formEl.querySelector(`[name="${CSS.escape(fieldName)}"]`);
+  if (!el) return false;
+
+  return String(el.value ?? "").trim() !== "";
+}
+
+function markInvalidRequired(questions, formEl){
+  const invalidRows = [];
+
+  questions.forEach((q, index) => {
+    if (!q.required) return;
+
+    const fieldName = getFieldName(q, index);
+    const ok = isRequiredAnswered(q, index, formEl);
+
+    if (!ok) {
+      const row = formEl.querySelector(`.row[data-field="${CSS.escape(fieldName)}"]`);
+      if (row && !row.classList.contains("invalid")) {
+        row.classList.add("invalid");
+        invalidRows.push(row);
+      }
+
+      // marca aria-invalid (melhora acessibilidade e ajuda alguns mobiles)
+      const type = String(q.type || "text").toLowerCase();
+      if (type === "radio" || type === "checkbox") {
+        formEl.querySelectorAll(`[name="${CSS.escape(fieldName)}"]`).forEach(el => el.setAttribute("aria-invalid","true"));
+      } else {
+        const el = formEl.querySelector(`[name="${CSS.escape(fieldName)}"]`);
+        if (el) el.setAttribute("aria-invalid","true");
+      }
+    }
+  });
+
+  return invalidRows;
+}
+
+function scrollToRow(row){
+  if (!row) return;
+
+  // calcula posição absoluta
+  const y = row.getBoundingClientRect().top + window.pageYOffset - 12;
+
+  // método mais confiável em mobile/webview
+  window.scrollTo({ top: y, left: 0, behavior: "smooth" });
+
+  // fallback "forçado" (caso smooth seja ignorado)
+  setTimeout(() => {
+    document.documentElement.scrollTop = y;
+    document.body.scrollTop = y;
+  }, 80);
+}
     /**************************************************************
      * ENVIO DO FORMULÁRIO (EXEMPLO)
      * Aqui você coloca seu save real.
      **************************************************************/
-   $("testForm").addEventListener("submit", async (e) => {
+  $("testForm").addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  const formEl = e.target;
+
+  // 1) validação antes de “enviar”
+  clearInvalidUI(formEl);
+
+  // (opcional) validações nativas (email, pattern etc.)
+ if (!formEl.checkValidity()) {
+  const isMobile = window.matchMedia("(pointer: coarse)").matches;
+
+  // no desktop pode usar bolha nativa; no mobile isso atrapalha
+  if (!isMobile && typeof formEl.reportValidity === "function") {
+    formEl.reportValidity();
+  }
+
+  const invalidRows = markInvalidRequired(FORM_QUESTIONS, formEl);
+  setStatus("Responda as perguntas obrigatórias destacadas em vermelho.", "warn");
+
+  const targetRow = invalidRows[0] || formEl.querySelector(":invalid")?.closest(".row");
+
+  // dá 1 tick pra aplicar classes antes do scroll (mobile)
+  setTimeout(() => scrollToRow(targetRow), 50);
+  return;
+}
+
+  // valida obrigatórias do seu modelo (especialmente radios)
+  const invalidRows = markInvalidRequired(FORM_QUESTIONS, formEl);
+ if (invalidRows.length) {
+  setStatus("Responda as perguntas obrigatórias destacadas em vermelho.", "warn");
+  setTimeout(() => scrollToRow(invalidRows[0]), 50);
+  return;
+}
 
   const btn = $("submitBtn");
   btn.disabled = true;
@@ -1605,20 +1738,17 @@ const respostasLegiveis = buildResultsPerguntasRespostas(FORM_QUESTIONS, rawPayl
 
 // cálculo de pontuação
 const scoring = buildScoringResult(FORM_QUESTIONS, rawPayload, INDICATORS_CONFIG);
-
-// results = array puro pergunta/resposta (como você quer)
 const resultsPayload = respostasLegiveis;
-
-// results_meta = SOMENTE soma dos indicadores configurados
 const resultsMetaPayload = Object.fromEntries(
   Object.entries(scoring.indicators).flatMap(([key, indicator]) => {
     const cfg = INDICATORS_CONFIG[key];
-    const rule = interpretByCutoffs(indicator.sum, cfg?.cutoffs);
+    const entries = [[key, indicator.sum]];
+    if (Array.isArray(cfg?.cutoffs) && cfg.cutoffs.length) {
+      const rule = interpretByCutoffs(indicator.sum, cfg.cutoffs);
+      if (rule?.text) entries.push([`${key}_interpretacao`, rule.text]);
+    }
 
-    return [
-      [key, indicator.sum], // soma
-      [`${key}_interpretacao`, rule?.text ?? null] // texto da faixa
-    ];
+    return entries;
   })
 );
 
@@ -1702,8 +1832,33 @@ const resultsMetaPayload = Object.fromEntries(
   }
 });
 // Monta o formulário dinâmico
-renderDynamicForm(FORM_QUESTIONS);
+
+function setupLiveInvalidCleanup(questions){
+  const formEl = $("testForm");
+
+  const handler = (e) => {
+    const row = e.target.closest(".row");
+    if (!row) return;
+
+    const fieldName = row.dataset.field;
+    if (!fieldName) return;
+
+    const idx = questions.findIndex((q, i) => getFieldName(q, i) === fieldName);
+    if (idx < 0) return;
+
+    if (isRequiredAnswered(questions[idx], idx, formEl)) {
+      row.classList.remove("invalid");
+      formEl.querySelectorAll(`[name="${CSS.escape(fieldName)}"]`)
+        .forEach(el => el.removeAttribute("aria-invalid"));
+    }
+  };
+
+  formEl.addEventListener("change", handler);
+  formEl.addEventListener("input", handler);
+}
 // Inicia a validação
+renderDynamicForm(FORM_QUESTIONS);
+setupLiveInvalidCleanup(FORM_QUESTIONS);
 validarAcessoAoTeste();
 
   </script>
