@@ -368,684 +368,878 @@ const SCALE_SCORE_MAPS = {
     /**************************************************************
  * CONFIGURAÇÃO DAS PERGUNTAS (DINÂMICO)
  **************************************************************/
-```javascript
 const FORM_QUESTIONS = [
   {
-    name:"1",
-    section:"Início e Persistência",
-    type:"radio",
-    text:"Você apresenta, há vários anos, uma necessidade frequente de ser admirado, reconhecido ou tratado como alguém especial?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "1",
+    type: "radio",
+    section: "Narcisista — Triagem & História",
+    text: "Desde o início da vida adulta, você percebe um padrão persistente de se sentir superior, especial, mais capaz ou mais importante do que a maioria das pessoas?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
   },
   {
-    name:"2",
-    section:"Início e Persistência",
-    type:"radio",
-    text:"Você apresenta, desde o fim da adolescência ou início da vida adulta, tendência a se considerar superior, mais capaz ou mais importante que outras pessoas?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "2",
+    type: "radio",
+    section: "Narcisista — Triagem & História",
+    text: "Esse padrão aparece em diferentes contextos da sua vida, como relacionamentos, família, trabalho, estudos, amizades ou vida social?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
   },
   {
-    name:"3",
-    section:"Início e Persistência",
-    type:"radio",
-    text:"Você costuma agir com necessidade de admiração, superioridade ou pouca consideração pelos sentimentos dos outros em diferentes contextos, como família, trabalho, amizades e relacionamentos afetivos?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "3",
+    type: "radio",
+    section: "Narcisista — Triagem & História",
+    text: "Você sente que frequentemente precisa ser reconhecido, valorizado, admirado ou tratado como alguém acima da média?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"4",
-    section:"Início e Persistência",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade ou reconhecimento já causou conflitos, afastamentos, críticas ou prejuízos concretos nos seus relacionamentos ou no trabalho?",
-    options:YNP,
-    scale:"YNP",
-    required:true
-  },
-  {
-    name:"5",
-    section:"Início e Persistência",
-    type:"radio",
-    text:"Pessoas próximas já disseram que você costuma agir como alguém superior, exigente, pouco empático, arrogante ou difícil de contrariar?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "4",
+    type: "radio",
+    section: "Narcisista — Triagem & História",
+    text: "Quando não recebe reconhecimento, admiração ou tratamento especial, você costuma se sentir ofendido, irritado, humilhado ou desvalorizado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"6",
-    section:"Grandiosidade",
-    type:"radio",
-    text:"Você costuma se considerar mais importante, mais capaz ou mais especial do que a maioria das pessoas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "5",
+    type: "radio",
+    section: "Narcisista — Grandiosidade",
+    text: "Você costuma sentir que suas qualidades, talentos, inteligência, beleza, competência ou importância são superiores às da maioria das pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"7",
-    section:"Grandiosidade",
-    type:"radio",
-    text:"Você costuma acreditar que suas ideias, talentos, inteligência ou competências são superiores às das pessoas ao seu redor?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "6",
+    type: "radio",
+    section: "Narcisista — Grandiosidade",
+    text: "Você costuma exagerar suas realizações, capacidades, experiências ou importância para ser mais reconhecido pelos outros?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"8",
-    section:"Grandiosidade",
-    type:"radio",
-    text:"Você costuma sentir que as pessoas não reconhecem adequadamente sua importância, capacidade, talento ou valor pessoal?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "7",
+    type: "radio",
+    section: "Narcisista — Grandiosidade",
+    text: "Você sente que suas conquistas ou qualidades não são reconhecidas na proporção que realmente merecem?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"9",
-    section:"Grandiosidade",
-    type:"radio",
-    text:"Você costuma esperar que os outros percebam sua superioridade sem que você precise demonstrar resultados concretos proporcionais?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "8",
+    type: "radio",
+    section: "Narcisista — Grandiosidade",
+    text: "Você costuma se incomodar quando pessoas que considera menos capazes recebem mais atenção, reconhecimento ou oportunidades do que você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"10",
-    section:"Grandiosidade",
-    type:"radio",
-    text:"Você costuma exagerar suas conquistas, habilidades, importância ou influência para causar uma impressão melhor nas pessoas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"11",
-    section:"Grandiosidade",
-    type:"radio",
-    text:"Você se sente incomodado quando é tratado como uma pessoa comum, sem destaque, prioridade ou reconhecimento especial?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "9",
+    type: "radio",
+    section: "Narcisista — Grandiosidade",
+    text: "Você costuma acreditar que merece posições, privilégios, respeito ou reconhecimento especial por ser quem é ou pelo que acredita representar?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"12",
-    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
-    type:"radio",
-    text:"Você passa muito tempo imaginando que alcançará sucesso extraordinário, poder, riqueza, fama, prestígio, beleza, inteligência superior ou reconhecimento elevado?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "10",
+    type: "radio",
+    section: "Narcisista — Fantasias de Sucesso e Poder",
+    text: "Você costuma fantasiar com frequência sobre ter grande sucesso, poder, fama, status, riqueza, influência ou superioridade sobre outras pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"13",
-    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
-    type:"radio",
-    text:"Você costuma imaginar que está destinado a uma vida muito acima do comum, mesmo quando sua realidade atual ainda não confirma essa expectativa?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "11",
+    type: "radio",
+    section: "Narcisista — Fantasias de Sucesso e Poder",
+    text: "Você costuma imaginar que será reconhecido como alguém excepcional, admirado, invejado ou muito acima das pessoas comuns?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"14",
-    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
-    type:"radio",
-    text:"Você se frustra intensamente quando sua vida real não corresponde à imagem grandiosa que você tem de si mesmo ou do seu futuro?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "12",
+    type: "radio",
+    section: "Narcisista — Fantasias de Sucesso e Poder",
+    text: "Você passa muito tempo pensando em cenários nos quais prova seu valor, supera todos, é admirado ou mostra que os outros estavam errados sobre você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"15",
-    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
-    type:"radio",
-    text:"Você costuma pensar que estaria em uma posição muito superior se as pessoas, as oportunidades ou as circunstâncias fossem mais justas com você?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-
-  {
-    name:"16",
-    section:"Crença de Ser Especial",
-    type:"radio",
-    text:"Você acredita que poucas pessoas conseguem realmente compreender sua inteligência, sensibilidade, capacidade, visão de mundo ou importância?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "13",
+    type: "radio",
+    section: "Narcisista — Fantasias de Sucesso e Poder",
+    text: "Você costuma imaginar relações ideais com pessoas muito bonitas, importantes, bem-sucedidas, famosas ou socialmente valorizadas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"17",
-    section:"Crença de Ser Especial",
-    type:"radio",
-    text:"Você prefere se relacionar com pessoas que considera especiais, influentes, bem-sucedidas, importantes, inteligentes ou de alto nível?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"18",
-    section:"Crença de Ser Especial",
-    type:"radio",
-    text:"Você se sente incomodado ao conviver com pessoas que considera comuns, limitadas, inferiores, pouco inteligentes ou pouco relevantes?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"19",
-    section:"Crença de Ser Especial",
-    type:"radio",
-    text:"Você busca se aproximar de pessoas, cargos, grupos, instituições ou ambientes de prestígio para reforçar sua própria imagem?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "14",
+    type: "radio",
+    section: "Narcisista — Fantasias de Sucesso e Poder",
+    text: "Quando se sente inferiorizado, criticado ou ignorado, você costuma se refugiar em fantasias de grandeza, revanche, sucesso ou reconhecimento futuro?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"20",
-    section:"Necessidade de Admiração",
-    type:"radio",
-    text:"Você precisa receber elogios, admiração, atenção ou reconhecimento para se sentir valorizado?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "15",
+    type: "radio",
+    section: "Narcisista — Crença de Ser Especial",
+    text: "Você sente que é uma pessoa especial ou diferente e que poucas pessoas conseguem realmente entender você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"21",
-    section:"Necessidade de Admiração",
-    type:"radio",
-    text:"Você fica irritado, triste, envergonhado ou desvalorizado quando não recebe elogios, atenção ou reconhecimento na intensidade que esperava?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "16",
+    type: "radio",
+    section: "Narcisista — Crença de Ser Especial",
+    text: "Você acredita que deveria se relacionar principalmente com pessoas especiais, inteligentes, bem-sucedidas, influentes ou de alto nível?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"22",
-    section:"Necessidade de Admiração",
-    type:"radio",
-    text:"Você tenta se destacar, impressionar ou demonstrar superioridade para ser admirado pelas pessoas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "17",
+    type: "radio",
+    section: "Narcisista — Crença de Ser Especial",
+    text: "Você costuma se sentir desconfortável, entediado ou irritado quando precisa conviver com pessoas que considera comuns, limitadas ou inferiores?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"23",
-    section:"Necessidade de Admiração",
-    type:"radio",
-    text:"Você reage de forma intensa quando é ignorado, pouco valorizado, criticado ou tratado sem admiração?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "18",
+    type: "radio",
+    section: "Narcisista — Crença de Ser Especial",
+    text: "Você sente que regras, rotinas ou tratamentos comuns não deveriam se aplicar a você da mesma forma que se aplicam às outras pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"24",
-    section:"Necessidade de Admiração",
-    type:"radio",
-    text:"Você sente necessidade de provar seu valor quando alguém não reconhece suas qualidades, conquistas ou importância?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-
-  {
-    name:"25",
-    section:"Senso de Direito",
-    type:"radio",
-    text:"Você espera receber tratamento especial, prioridade, favores ou concessões mesmo quando a regra é igual para todos?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"26",
-    section:"Senso de Direito",
-    type:"radio",
-    text:"Você se irrita quando outras pessoas não atendem rapidamente suas expectativas, pedidos, necessidades ou preferências?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"27",
-    section:"Senso de Direito",
-    type:"radio",
-    text:"Você sente que merece mais benefícios, tolerância, reconhecimento ou vantagens do que outras pessoas na mesma situação?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"28",
-    section:"Senso de Direito",
-    type:"radio",
-    text:"Você se incomoda quando precisa esperar, seguir limites, receber negativas ou aceitar regras como qualquer outra pessoa?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "19",
+    type: "radio",
+    section: "Narcisista — Crença de Ser Especial",
+    text: "Você costuma procurar validação em pessoas de status, autoridade, beleza, inteligência, poder ou reconhecimento social?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"29",
-    section:"Exploração Interpessoal",
-    type:"radio",
-    text:"Você costuma usar contatos, relações, favores ou a boa vontade de outras pessoas para alcançar seus próprios objetivos?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "20",
+    type: "radio",
+    section: "Narcisista — Necessidade de Admiração",
+    text: "Você sente necessidade frequente de receber elogios, reconhecimento, atenção ou confirmação de que é importante?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"30",
-    section:"Exploração Interpessoal",
-    type:"radio",
-    text:"Você se aproxima de algumas pessoas principalmente pelo benefício, status, vantagem, influência ou utilidade que elas podem oferecer?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "21",
+    type: "radio",
+    section: "Narcisista — Necessidade de Admiração",
+    text: "Quando não recebe elogios ou atenção, você sente queda importante na autoestima, irritação, vazio, inveja ou sensação de humilhação?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"31",
-    section:"Exploração Interpessoal",
-    type:"radio",
-    text:"Você deixa de considerar o impacto das suas atitudes nos outros quando considerar esse impacto atrapalharia seus interesses pessoais?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "22",
+    type: "radio",
+    section: "Narcisista — Necessidade de Admiração",
+    text: "Você costuma direcionar conversas para suas conquistas, qualidades, dificuldades ou histórias para receber reconhecimento ou atenção?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"32",
-    section:"Exploração Interpessoal",
-    type:"radio",
-    text:"Alguém já disse que você manipula, usa, explora ou se aproveita das pessoas para conseguir o que quer?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-
-  {
-    name:"33",
-    section:"Empatia",
-    type:"radio",
-    text:"Você tem dificuldade para perceber os sentimentos, necessidades ou limites emocionais das outras pessoas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "23",
+    type: "radio",
+    section: "Narcisista — Necessidade de Admiração",
+    text: "Você se sente mal quando outra pessoa recebe mais destaque, elogio ou admiração em uma situação em que você também está presente?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"34",
-    section:"Empatia",
-    type:"radio",
-    text:"Você tem dificuldade para levar a sério quando alguém diz que foi magoado, desrespeitado ou ferido por algo que você fez ou falou?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"35",
-    section:"Empatia",
-    type:"radio",
-    text:"Você costuma considerar exagerada a dor, fragilidade, sensibilidade emocional ou necessidade de apoio das outras pessoas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"36",
-    section:"Empatia",
-    type:"radio",
-    text:"Você tem dificuldade para mudar sua atitude quando percebe que sua forma de agir está causando sofrimento em alguém?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"37",
-    section:"Empatia",
-    type:"radio",
-    text:"Pessoas próximas já disseram que você não escuta, minimiza, ignora ou desconsidera os sentimentos delas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "24",
+    type: "radio",
+    section: "Narcisista — Necessidade de Admiração",
+    text: "Você costuma avaliar seu valor pessoal pela reação, admiração, elogio ou reconhecimento que recebe dos outros?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"38",
-    section:"Inveja e Comparação",
-    type:"radio",
-    text:"Você sente incômodo, irritação ou inveja quando outra pessoa recebe elogio, destaque, sucesso ou reconhecimento?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "25",
+    type: "radio",
+    section: "Narcisista — Senso de Direito",
+    text: "Você sente que merece tratamento especial, prioridade, exceções ou privilégios mesmo quando isso não foi combinado claramente?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"39",
-    section:"Inveja e Comparação",
-    type:"radio",
-    text:"Você acredita que outras pessoas costumam ter inveja de você, do seu potencial, da sua imagem, das suas qualidades ou das suas conquistas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "26",
+    type: "radio",
+    section: "Narcisista — Senso de Direito",
+    text: "Você fica irritado, ofendido ou indignado quando precisa esperar, seguir regras ou ser tratado como qualquer outra pessoa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"40",
-    section:"Inveja e Comparação",
-    type:"radio",
-    text:"Você costuma comparar seu valor pessoal, profissional, intelectual, social ou financeiro com o valor de outras pessoas?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "27",
+    type: "radio",
+    section: "Narcisista — Senso de Direito",
+    text: "Você costuma esperar que as pessoas atendam suas necessidades, desejos ou expectativas sem que você precise explicar muito ou retribuir na mesma medida?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"41",
-    section:"Inveja e Comparação",
-    type:"radio",
-    text:"Você precisa se sentir acima dos outros em inteligência, competência, aparência, status ou importância para se sentir bem consigo mesmo?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "28",
+    type: "radio",
+    section: "Narcisista — Senso de Direito",
+    text: "Você acredita que, por suas qualidades, esforço, sofrimento, inteligência ou importância, os outros deveriam reconhecer mais seus direitos e necessidades?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"42",
-    section:"Inveja e Comparação",
-    type:"radio",
-    text:"Você costuma diminuir, desqualificar ou relativizar o sucesso de outras pessoas para não se sentir inferior ou ameaçado?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-
-  {
-    name:"43",
-    section:"Arrogância e Atitudes de Superioridade",
-    type:"radio",
-    text:"As pessoas já disseram que você age de forma arrogante, superior, fria, convencida, autoritária ou difícil de contrariar?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"44",
-    section:"Arrogância e Atitudes de Superioridade",
-    type:"radio",
-    text:"Você costuma desprezar, diminuir ou desqualificar pessoas que considera incompetentes, fracas, ignorantes, inferiores ou pouco importantes?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"45",
-    section:"Arrogância e Atitudes de Superioridade",
-    type:"radio",
-    text:"Você tem dificuldade para admitir que errou quando outra pessoa aponta uma falha sua?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"46",
-    section:"Arrogância e Atitudes de Superioridade",
-    type:"radio",
-    text:"Você tem dificuldade para pedir desculpas de forma sincera quando percebe que prejudicou, magoou ou desrespeitou alguém?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-  {
-    name:"47",
-    section:"Arrogância e Atitudes de Superioridade",
-    type:"radio",
-    text:"Você reage com desprezo, ironia, frieza, humilhação ou superioridade quando alguém discorda de você ou contraria sua vontade?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "29",
+    type: "radio",
+    section: "Narcisista — Senso de Direito",
+    text: "Você costuma sentir que críticas, limites ou recusas das outras pessoas são injustas, ofensivas ou desrespeitosas com você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"48",
-    section:"Reação a Críticas",
-    type:"radio",
-    text:"Você fica com raiva, vergonha, humilhação, ressentimento ou necessidade de defesa quando recebe críticas, correções ou discordâncias?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "30",
+    type: "radio",
+    section: "Narcisista — Exploração Interpessoal",
+    text: "Você costuma usar habilidades, influência, charme, intimidação, culpa ou pressão emocional para conseguir o que deseja das pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"49",
-    section:"Reação a Críticas",
-    type:"radio",
-    text:"Você interpreta críticas comuns como ataque pessoal, desvalorização, humilhação ou falta de respeito?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "31",
+    type: "radio",
+    section: "Narcisista — Exploração Interpessoal",
+    text: "Você já se aproximou de pessoas principalmente pelo que elas poderiam oferecer, como status, dinheiro, contatos, admiração, favores ou vantagens?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"50",
-    section:"Reação a Críticas",
-    type:"radio",
-    text:"Depois de ser criticado, você sente necessidade de provar que é melhor, mais capaz ou que estava certo?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "32",
+    type: "radio",
+    section: "Narcisista — Exploração Interpessoal",
+    text: "Você costuma pedir favores, atenção ou ajuda sem se preocupar muito se a outra pessoa está sobrecarregada, desconfortável ou prejudicada?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"51",
-    section:"Reação a Críticas",
-    type:"radio",
-    text:"Você guarda mágoa, rancor, desprezo ou vontade de se vingar depois que alguém critica, corrige ou contraria você?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-
-  {
-    name:"52",
-    section:"Prejuízo Funcional",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou seus relacionamentos amorosos?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "33",
+    type: "radio",
+    section: "Narcisista — Exploração Interpessoal",
+    text: "Você já manipulou informações, omitiu intenções ou conduziu uma situação para que outra pessoa fizesse algo que beneficiava principalmente você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"53",
-    section:"Prejuízo Funcional",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou suas amizades ou relações sociais?",
-    options:YNP,
-    scale:"YNP",
-    required:true
-  },
-  {
-    name:"54",
-    section:"Prejuízo Funcional",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou sua relação com familiares?",
-    options:YNP,
-    scale:"YNP",
-    required:true
-  },
-  {
-    name:"55",
-    section:"Prejuízo Funcional",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou seu trabalho, liderança, equipe ou relação com colegas?",
-    options:YNP,
-    scale:"YNP",
-    required:true
-  },
-  {
-    name:"56",
-    section:"Prejuízo Funcional",
-    type:"radio",
-    text:"Qual é a gravidade do prejuízo causado pela sua necessidade de admiração, superioridade, reconhecimento ou tratamento especial?",
-    options:SEVER4,
-    scale:"SEVER4",
-    required:true
+    name: "34",
+    type: "radio",
+    section: "Narcisista — Exploração Interpessoal",
+    text: "Você sente pouca culpa quando usa alguém para alcançar um objetivo, desde que considere esse objetivo importante para você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"57",
-    section:"Consciência do Problema",
-    type:"radio",
-    text:"Você reconhece que sua necessidade de admiração, superioridade ou reconhecimento pode causar sofrimento para outras pessoas?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "35",
+    type: "radio",
+    section: "Narcisista — Falta de Empatia",
+    text: "Você tem dificuldade de perceber ou considerar profundamente os sentimentos, necessidades ou limites das outras pessoas quando eles atrapalham seus objetivos?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"58",
-    section:"Consciência do Problema",
-    type:"radio",
-    text:"Você reconhece que sua necessidade de admiração, superioridade ou reconhecimento pode causar prejuízo para você?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "36",
+    type: "radio",
+    section: "Narcisista — Falta de Empatia",
+    text: "Quando alguém fala de sofrimento, você costuma se sentir impaciente, incomodado, entediado ou mais preocupado com o impacto disso sobre você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"59",
-    section:"Consciência do Problema",
-    type:"radio",
-    text:"Quando alguém aponta que você foi arrogante, superior, pouco empático ou exigente, você costuma negar, justificar ou minimizar o problema?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
+    name: "37",
+    type: "radio",
+    section: "Narcisista — Falta de Empatia",
+    text: "Você costuma minimizar a dor, necessidade ou reclamação dos outros quando considera que eles estão exagerando ou atrapalhando você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"60",
-    section:"Consciência do Problema",
-    type:"radio",
-    text:"Quando alguém aponta que você foi arrogante, superior, pouco empático ou exigente, você costuma atacar, desqualificar ou culpar a pessoa?",
-    options:FREQ5,
-    scale:"FREQ5",
-    required:true
-  },
-
-  {
-    name:"61",
-    section:"Diferencial com Humor",
-    type:"radio",
-    text:"Seu sentimento de superioridade aparece apenas em fases nas quais você dorme pouco, fica muito acelerado, fala demais, assume riscos ou tem energia excessiva?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "38",
+    type: "radio",
+    section: "Narcisista — Falta de Empatia",
+    text: "Você tem dificuldade de pedir desculpas de forma genuína quando percebe que machucou alguém?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"62",
-    section:"Diferencial com Humor",
-    type:"radio",
-    text:"Seu sentimento de superioridade continua presente mesmo quando seu humor está estável, sem euforia, aceleração, irritabilidade intensa ou redução da necessidade de sono?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "39",
+    type: "radio",
+    section: "Narcisista — Falta de Empatia",
+    text: "Você costuma entender racionalmente o que a pessoa sente, mas tem dificuldade de se importar emocionalmente quando isso exige renúncia, humildade ou mudança da sua parte?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"63",
-    section:"Diferencial com Humor",
-    type:"radio",
-    text:"Sua necessidade de admiração continua presente mesmo fora de fases de euforia, irritabilidade intensa, impulsividade aumentada ou aceleração mental?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "40",
+    type: "radio",
+    section: "Narcisista — Falta de Empatia",
+    text: "Pessoas próximas já disseram que você é frio, egoísta, insensível, autocentrado ou pouco preocupado com os sentimentos delas?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"64",
-    section:"Diferencial com Outros Quadros",
-    type:"radio",
-    text:"Suas dificuldades nos relacionamentos são causadas principalmente por medo intenso de abandono, instabilidade emocional e sensação de rejeição?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "41",
+    type: "radio",
+    section: "Narcisista — Inveja",
+    text: "Você costuma sentir inveja intensa quando outras pessoas recebem reconhecimento, sucesso, dinheiro, beleza, status, atenção ou oportunidades?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"65",
-    section:"Diferencial com Outros Quadros",
-    type:"radio",
-    text:"Sua busca por atenção acontece principalmente por dramatização, sedução, teatralidade ou necessidade de ser o centro das situações?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "42",
+    type: "radio",
+    section: "Narcisista — Inveja",
+    text: "Quando alguém se destaca, você costuma procurar defeitos, desvalorizar a conquista ou pensar que a pessoa não merece tanto reconhecimento?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"66",
-    section:"Diferencial com Outros Quadros",
-    type:"radio",
-    text:"Você costuma quebrar regras, enganar pessoas, desrespeitar direitos dos outros ou agir sem culpa desde a adolescência?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "43",
+    type: "radio",
+    section: "Narcisista — Inveja",
+    text: "Você acredita que outras pessoas frequentemente têm inveja de você, do que você é, do que possui ou do que representa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"67",
-    section:"Diferencial com Outros Quadros",
-    type:"radio",
-    text:"Sua rigidez com as pessoas vem principalmente de perfeccionismo, controle, ordem, regras e necessidade de que tudo seja feito do seu jeito?",
-    options:YNP,
-    scale:"YNP",
-    required:true
-  },
-
-  {
-    name:"68",
-    section:"Substâncias e Condições Médicas",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade, impulsividade ou redução de empatia começou ou piorou claramente após uso de álcool, drogas, anabolizantes, estimulantes, antidepressivos, corticoides ou outras substâncias?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "44",
+    type: "radio",
+    section: "Narcisista — Inveja",
+    text: "Você costuma se comparar com outras pessoas para verificar quem é mais inteligente, bonito, bem-sucedido, desejado, respeitado ou superior?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"69",
-    section:"Substâncias e Condições Médicas",
-    type:"radio",
-    text:"Sua necessidade de admiração, superioridade, impulsividade ou redução de empatia começou ou piorou claramente após doença neurológica, traumatismo craniano, convulsões, alterações hormonais ou outra condição médica importante?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "45",
+    type: "radio",
+    section: "Narcisista — Inveja",
+    text: "O sucesso de outra pessoa costuma provocar em você raiva, sensação de injustiça, competição ou necessidade de provar que você é melhor?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
 
   {
-    name:"70",
-    section:"Confirmação por Outra Pessoa",
-    type:"radio",
-    text:"Uma pessoa próxima diria que você costuma se sentir superior, mais capaz ou mais importante do que os outros?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "46",
+    type: "radio",
+    section: "Narcisista — Arrogância e Superioridade",
+    text: "Você costuma ser percebido como arrogante, superior, crítico, debochado, impaciente ou desdenhoso com outras pessoas?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
   },
   {
-    name:"71",
-    section:"Confirmação por Outra Pessoa",
-    type:"radio",
-    text:"Uma pessoa próxima diria que você precisa muito de admiração, elogio, reconhecimento ou tratamento especial?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "47",
+    type: "radio",
+    section: "Narcisista — Arrogância e Superioridade",
+    text: "Você costuma corrigir, criticar ou diminuir pessoas quando acredita que elas são incompetentes, ignorantes, fracas ou inferiores?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"72",
-    section:"Confirmação por Outra Pessoa",
-    type:"radio",
-    text:"Uma pessoa próxima diria que você tem dificuldade para considerar os sentimentos, necessidades ou limites dos outros?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "48",
+    type: "radio",
+    section: "Narcisista — Arrogância e Superioridade",
+    text: "Você se irrita facilmente com pessoas que considera lentas, burras, medíocres, sensíveis demais ou incapazes de acompanhar seu nível?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
   },
   {
-    name:"73",
-    section:"Confirmação por Outra Pessoa",
-    type:"radio",
-    text:"Uma pessoa próxima diria que sua necessidade de admiração, superioridade ou reconhecimento causa prejuízo nos seus relacionamentos, trabalho ou família?",
-    options:YNP,
-    scale:"YNP",
-    required:true
+    name: "49",
+    type: "radio",
+    section: "Narcisista — Arrogância e Superioridade",
+    text: "Você costuma falar ou agir de forma que passa a impressão de que sabe mais, vale mais ou merece mais que os outros?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "50",
+    type: "radio",
+    section: "Narcisista — Arrogância e Superioridade",
+    text: "Quando contrariado, você costuma reagir com desprezo, ironia, frieza, humilhação, silêncio punitivo ou desvalorização da outra pessoa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "51",
+    type: "radio",
+    section: "Narcisista — Sensibilidade à Crítica",
+    text: "Você reage muito mal a críticas, correções, rejeições ou sinais de que não foi admirado como esperava?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "52",
+    type: "radio",
+    section: "Narcisista — Sensibilidade à Crítica",
+    text: "Quando recebe crítica, você costuma sentir vergonha, raiva, humilhação, vontade de atacar, se afastar ou provar que a pessoa está errada?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "53",
+    type: "radio",
+    section: "Narcisista — Sensibilidade à Crítica",
+    text: "Você costuma interpretar críticas comuns como ataques pessoais, inveja, desrespeito ou tentativa de diminuir você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "54",
+    type: "radio",
+    section: "Narcisista — Sensibilidade à Crítica",
+    text: "Depois de ser criticado, você fica ruminando por muito tempo sobre como foi injustiçado, humilhado ou desvalorizado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "55",
+    type: "radio",
+    section: "Narcisista — Sensibilidade à Crítica",
+    text: "Quando se sente diminuído, você tenta recuperar controle por meio de superioridade, frieza, ataque, desprezo ou autopromoção?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "56",
+    type: "radio",
+    section: "Narcisista — Relações Interpessoais",
+    text: "Seus relacionamentos costumam ser marcados por desequilíbrio, em que suas necessidades, conquistas, dores ou opiniões ocupam mais espaço que as da outra pessoa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "57",
+    type: "radio",
+    section: "Narcisista — Relações Interpessoais",
+    text: "Você costuma perder interesse ou desvalorizar pessoas quando elas deixam de admirar, servir, validar ou beneficiar você?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "58",
+    type: "radio",
+    section: "Narcisista — Relações Interpessoais",
+    text: "Você costuma se aproximar de pessoas que reforçam sua autoestima e se afastar de quem questiona, critica ou impõe limites?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "59",
+    type: "radio",
+    section: "Narcisista — Relações Interpessoais",
+    text: "Você tem dificuldade de manter relações recíprocas, em que as necessidades da outra pessoa tenham o mesmo peso que as suas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "60",
+    type: "radio",
+    section: "Narcisista — Relações Interpessoais",
+    text: "Pessoas próximas já se afastaram de você por se sentirem usadas, diminuídas, invalidadas, controladas ou pouco consideradas?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "61",
+    type: "radio",
+    section: "Narcisista — Autoestima Frágil",
+    text: "Por trás da aparência de confiança, você sente uma autoestima instável, que depende muito de admiração, sucesso, controle ou comparação com os outros?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "62",
+    type: "radio",
+    section: "Narcisista — Autoestima Frágil",
+    text: "Você alterna entre se sentir superior e, em momentos de crítica ou fracasso, se sentir humilhado, vazio, inferior ou sem valor?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "63",
+    type: "radio",
+    section: "Narcisista — Autoestima Frágil",
+    text: "Você precisa provar constantemente seu valor por desempenho, aparência, inteligência, status, dinheiro, controle ou aprovação externa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "64",
+    type: "radio",
+    section: "Narcisista — Autoestima Frágil",
+    text: "Quando fracassa, erra ou é superado por alguém, você sente vergonha intensa, raiva, inveja ou sensação de queda pessoal desproporcional?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "65",
+    type: "radio",
+    section: "Narcisista — Prejuízo Funcional",
+    text: "Esse padrão de grandiosidade, necessidade de admiração, sensibilidade à crítica ou falta de empatia prejudica seus relacionamentos, trabalho, estudos, família ou vida social?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "66",
+    type: "radio",
+    section: "Narcisista — Prejuízo Funcional",
+    text: "Você já perdeu vínculos, oportunidades, empregos, amizades ou parcerias por conflitos ligados a orgulho, superioridade, controle, críticas ou necessidade de reconhecimento?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "67",
+    type: "radio",
+    section: "Narcisista — Prejuízo Funcional",
+    text: "Você percebe que sua dificuldade em aceitar limites, críticas ou frustrações causa conflitos repetidos com pessoas importantes?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "68",
+    type: "radio",
+    section: "Narcisista — Prejuízo Funcional",
+    text: "Outras pessoas já disseram que você precisa ter sempre razão, controlar a situação ou estar em posição superior?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "69",
+    type: "radio",
+    section: "Narcisista — Diferencial com Mania/Hipomania",
+    text: "Sua sensação de superioridade, autoconfiança ou grandiosidade aparece como um padrão constante de personalidade, e não apenas em fases de vários dias com energia aumentada e menor necessidade de sono?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "70",
+    type: "radio",
+    section: "Narcisista — Diferencial com Mania/Hipomania",
+    text: "Você já teve uma fase clara de pelo menos 4 dias seguidos com humor muito elevado ou irritado, energia aumentada, pouca necessidade de sono, fala acelerada e impulsividade fora do seu padrão habitual?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "71",
+    type: "radio",
+    section: "Narcisista — Diferencial com Borderline",
+    text: "Suas crises emocionais são mais ligadas a feridas no orgulho, críticas, perda de status ou falta de admiração do que a medo intenso de abandono?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "72",
+    type: "radio",
+    section: "Narcisista — Diferencial com Borderline",
+    text: "Você costuma reagir à rejeição com desprezo, frieza, ataque ou desvalorização da outra pessoa, mais do que com desespero para evitar abandono?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "73",
+    type: "radio",
+    section: "Narcisista — Diferencial com Borderline",
+    text: "Você apresenta autoagressão, ameaças suicidas ou tentativas de suicídio principalmente em contextos de abandono, rejeição ou medo de perder alguém?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "74",
+    type: "radio",
+    section: "Narcisista — Diferencial com Antissocial",
+    text: "Você costuma desrespeitar direitos, segurança ou limites legais dos outros de forma repetida, com mentiras, golpes, agressões, violações ou ausência de remorso?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "75",
+    type: "radio",
+    section: "Narcisista — Diferencial com Antissocial",
+    text: "Você já teve desde a adolescência comportamentos persistentes de violação de regras, agressividade, furtos, mentiras, crueldade, destruição ou problemas legais?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "76",
+    type: "radio",
+    section: "Narcisista — Diferencial com Histriônico",
+    text: "Sua busca por atenção acontece mais pela necessidade de ser admirado como superior, especial ou importante do que pela necessidade de ser o centro emocional ou sedutor da situação?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "77",
+    type: "radio",
+    section: "Narcisista — Diferencial com Histriônico",
+    text: "Você costuma usar aparência, sedução, dramatização ou expressão emocional exagerada para chamar atenção de forma frequente?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "78",
+    type: "radio",
+    section: "Narcisista — Diferencial com Evitativo",
+    text: "Você evita exposição social principalmente por medo de crítica, vergonha ou inadequação, apesar de desejar aceitação e vínculo?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "79",
+    type: "radio",
+    section: "Narcisista — Diferencial com Evitativo",
+    text: "Quando se afasta das pessoas, isso ocorre mais por se sentir superior, entediado ou desvalorizado do que por medo de ser rejeitado?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "80",
+    type: "radio",
+    section: "Narcisista — Diferencial e Exclusões",
+    text: "Esse padrão de grandiosidade, busca de admiração ou falta de empatia aparece apenas quando você usa álcool, drogas, estimulantes, antidepressivos, corticoides ou outras medicações?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "81",
+    type: "radio",
+    section: "Narcisista — Diferencial e Exclusões",
+    text: "Esse padrão começou apenas depois de uma lesão cerebral, doença neurológica, condição médica importante ou mudança abrupta de personalidade?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "82",
+    type: "radio",
+    section: "Narcisista — Diferencial e Exclusões",
+    text: "Esse padrão é melhor explicado por um episódio de mania, hipomania, psicose, uso de substâncias, trauma, TDAH ou outro transtorno já identificado?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "83",
+    type: "radio",
+    section: "Narcisista — Risco e Segurança",
+    text: "Quando se sente criticado, humilhado, rejeitado ou desvalorizado, você tem vontade de se vingar, destruir a imagem da pessoa, atacar ou causar prejuízo a ela?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "84",
+    type: "radio",
+    section: "Narcisista — Risco e Segurança",
+    text: "Quando sua autoestima desaba após crítica, fracasso ou rejeição, você tem pensamentos de morte, autoagressão ou suicídio?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "85",
+    type: "radio",
+    section: "Narcisista — Risco e Segurança",
+    text: "Atualmente, existe risco de você agir de forma impulsiva, agressiva, vingativa ou autodestrutiva por se sentir ferido, humilhado ou desvalorizado?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
   }
-];
-```
-    
+];    
 const INDICATORS_CONFIG = {};
 
     /**************************************************************
