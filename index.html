@@ -368,399 +368,683 @@ const SCALE_SCORE_MAPS = {
     /**************************************************************
  * CONFIGURAÇÃO DAS PERGUNTAS (DINÂMICO)
  **************************************************************/
+```javascript
 const FORM_QUESTIONS = [
   {
     name:"1",
-    section:"História e Persistência do Padrão",
+    section:"Início e Persistência",
     type:"radio",
-    text:"Esse jeito de se sentir superior, precisar de admiração ou ter dificuldade para considerar o lado dos outros está presente há muitos anos?",
+    text:"Você apresenta, há vários anos, uma necessidade frequente de ser admirado, reconhecido ou tratado como alguém especial?",
     options:YNP,
-    scale:"YNP"
+    scale:"YNP",
+    required:true
   },
   {
     name:"2",
-    section:"História e Persistência do Padrão",
+    section:"Início e Persistência",
     type:"radio",
-    text:"Esse jeito de se sentir superior, precisar de admiração ou ter dificuldade para considerar o lado dos outros já era percebido desde o fim da adolescência ou início da vida adulta?",
+    text:"Você apresenta, desde o fim da adolescência ou início da vida adulta, tendência a se considerar superior, mais capaz ou mais importante que outras pessoas?",
     options:YNP,
-    scale:"YNP"
+    scale:"YNP",
+    required:true
   },
   {
     name:"3",
-    section:"História e Persistência do Padrão",
+    section:"Início e Persistência",
     type:"radio",
-    text:"Esse jeito de se sentir superior, precisar de admiração ou ter dificuldade para considerar o lado dos outros aparece em vários ambientes, como família, trabalho, amizades ou relacionamentos?",
+    text:"Você costuma agir com necessidade de admiração, superioridade ou pouca consideração pelos sentimentos dos outros em diferentes contextos, como família, trabalho, amizades e relacionamentos afetivos?",
     options:YNP,
-    scale:"YNP"
+    scale:"YNP",
+    required:true
   },
   {
     name:"4",
-    section:"História e Persistência do Padrão",
+    section:"Início e Persistência",
     type:"radio",
-    text:"Esse jeito de se sentir superior, precisar de admiração ou ter dificuldade para considerar o lado dos outros costuma se repetir mesmo quando isso traz conflitos ou prejuízos?",
+    text:"Sua necessidade de admiração, superioridade ou reconhecimento já causou conflitos, afastamentos, críticas ou prejuízos concretos nos seus relacionamentos ou no trabalho?",
     options:YNP,
-    scale:"YNP"
+    scale:"YNP",
+    required:true
   },
-
   {
     name:"5",
-    section:"Grandiosidade",
+    section:"Início e Persistência",
     type:"radio",
-    text:"Com que frequência você sente que é mais capaz, mais inteligente, mais especial ou mais importante do que a maioria das pessoas?",
-    options:FREQ5,
-    scale:"FREQ5"
+    text:"Pessoas próximas já disseram que você costuma agir como alguém superior, exigente, pouco empático, arrogante ou difícil de contrariar?",
+    options:YNP,
+    scale:"YNP",
+    required:true
   },
+
   {
     name:"6",
     section:"Grandiosidade",
     type:"radio",
-    text:"Com que frequência você sente que merece reconhecimento maior do que recebe, mesmo sem que os outros percebam isso?",
+    text:"Você costuma se considerar mais importante, mais capaz ou mais especial do que a maioria das pessoas?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"7",
     section:"Grandiosidade",
     type:"radio",
-    text:"Com que frequência você acredita que seu valor é tão alto que as regras comuns não deveriam se aplicar do mesmo jeito a você?",
+    text:"Você costuma acreditar que suas ideias, talentos, inteligência ou competências são superiores às das pessoas ao seu redor?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"8",
     section:"Grandiosidade",
     type:"radio",
-    text:"Com que frequência você pensa que poucas pessoas estão realmente no seu nível de inteligência, talento, beleza ou importância?",
+    text:"Você costuma sentir que as pessoas não reconhecem adequadamente sua importância, capacidade, talento ou valor pessoal?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"9",
     section:"Grandiosidade",
     type:"radio",
-    text:"Com que frequência você sente que deveria ocupar posições mais altas, receber tratamento melhor ou ser mais valorizado do que é atualmente?",
+    text:"Você costuma esperar que os outros percebam sua superioridade sem que você precise demonstrar resultados concretos proporcionais?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
-
   {
     name:"10",
-    section:"Fantasias de Sucesso e Superioridade",
+    section:"Grandiosidade",
     type:"radio",
-    text:"Com que frequência você fica muito envolvido em pensamentos sobre sucesso extraordinário, poder, influência, brilho intelectual, beleza ou relacionamento ideal?",
+    text:"Você costuma exagerar suas conquistas, habilidades, importância ou influência para causar uma impressão melhor nas pessoas?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"11",
-    section:"Fantasias de Sucesso e Superioridade",
+    section:"Grandiosidade",
     type:"radio",
-    text:"Com que frequência você imagina que está destinado a algo muito acima do comum e que os outros ainda não perceberam isso?",
+    text:"Você se sente incomodado quando é tratado como uma pessoa comum, sem destaque, prioridade ou reconhecimento especial?",
     options:FREQ5,
-    scale:"FREQ5"
-  },
-  {
-    name:"12",
-    section:"Fantasias de Sucesso e Superioridade",
-    type:"radio",
-    text:"Com que frequência você se frustra porque a realidade não corresponde à imagem grandiosa que você faz de si mesmo?",
-    options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
   {
-    name:"13",
-    section:"Necessidade de Admiração",
+    name:"12",
+    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
     type:"radio",
-    text:"Com que frequência você precisa que outras pessoas reconheçam, elogiem ou admirem você para se sentir bem consigo mesmo?",
+    text:"Você passa muito tempo imaginando que alcançará sucesso extraordinário, poder, riqueza, fama, prestígio, beleza, inteligência superior ou reconhecimento elevado?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"13",
+    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
+    type:"radio",
+    text:"Você costuma imaginar que está destinado a uma vida muito acima do comum, mesmo quando sua realidade atual ainda não confirma essa expectativa?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"14",
-    section:"Necessidade de Admiração",
+    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
     type:"radio",
-    text:"Com que frequência você fica incomodado quando não recebe atenção, elogio ou validação das pessoas ao seu redor?",
+    text:"Você se frustra intensamente quando sua vida real não corresponde à imagem grandiosa que você tem de si mesmo ou do seu futuro?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"15",
-    section:"Necessidade de Admiração",
+    section:"Fantasias de Sucesso, Poder ou Reconhecimento",
     type:"radio",
-    text:"Com que frequência críticas, rejeições ou falta de reconhecimento abalam muito sua autoestima ou fazem você reagir intensamente?",
+    text:"Você costuma pensar que estaria em uma posição muito superior se as pessoas, as oportunidades ou as circunstâncias fossem mais justas com você?",
     options:FREQ5,
-    scale:"FREQ5"
-  },
-  {
-    name:"16",
-    section:"Necessidade de Admiração",
-    type:"radio",
-    text:"Com que frequência você busca se destacar para manter a sensação de valor, importância ou superioridade diante dos outros?",
-    options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
+  {
+    name:"16",
+    section:"Crença de Ser Especial",
+    type:"radio",
+    text:"Você acredita que poucas pessoas conseguem realmente compreender sua inteligência, sensibilidade, capacidade, visão de mundo ou importância?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
   {
     name:"17",
     section:"Crença de Ser Especial",
     type:"radio",
-    text:"Com que frequência você sente que só pode ser realmente compreendido por pessoas muito especiais, influentes ou de alto nível?",
+    text:"Você prefere se relacionar com pessoas que considera especiais, influentes, bem-sucedidas, importantes, inteligentes ou de alto nível?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"18",
     section:"Crença de Ser Especial",
     type:"radio",
-    text:"Com que frequência você considera que conviver com pessoas comuns demais diminui seu valor ou seu status?",
+    text:"Você se sente incomodado ao conviver com pessoas que considera comuns, limitadas, inferiores, pouco inteligentes ou pouco relevantes?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"19",
     section:"Crença de Ser Especial",
     type:"radio",
-    text:"Com que frequência você procura se aproximar de pessoas, grupos ou instituições de prestígio para reforçar a imagem que tem de si mesmo?",
+    text:"Você busca se aproximar de pessoas, cargos, grupos, instituições ou ambientes de prestígio para reforçar sua própria imagem?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
   {
     name:"20",
-    section:"Senso de Direito",
+    section:"Necessidade de Admiração",
     type:"radio",
-    text:"Com que frequência você espera receber tratamento especial mesmo quando a situação é igual para todos?",
+    text:"Você precisa receber elogios, admiração, atenção ou reconhecimento para se sentir valorizado?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"21",
-    section:"Senso de Direito",
+    section:"Necessidade de Admiração",
     type:"radio",
-    text:"Com que frequência você se irrita quando outras pessoas não atendem suas expectativas de atenção, prioridade ou reconhecimento?",
+    text:"Você fica irritado, triste, envergonhado ou desvalorizado quando não recebe elogios, atenção ou reconhecimento na intensidade que esperava?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"22",
-    section:"Senso de Direito",
+    section:"Necessidade de Admiração",
     type:"radio",
-    text:"Com que frequência você sente que merece favores, vantagens ou concessões sem precisar justificar isso como os demais?",
+    text:"Você tenta se destacar, impressionar ou demonstrar superioridade para ser admirado pelas pessoas?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
-
   {
     name:"23",
-    section:"Exploração Interpessoal",
+    section:"Necessidade de Admiração",
     type:"radio",
-    text:"Com que frequência você usa relações, contatos ou a boa vontade das pessoas para alcançar seus objetivos pessoais?",
+    text:"Você reage de forma intensa quando é ignorado, pouco valorizado, criticado ou tratado sem admiração?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"24",
-    section:"Exploração Interpessoal",
+    section:"Necessidade de Admiração",
     type:"radio",
-    text:"Com que frequência você aproxima-se de alguém mais pelo benefício, status ou utilidade que essa pessoa pode oferecer do que pela relação em si?",
+    text:"Você sente necessidade de provar seu valor quando alguém não reconhece suas qualidades, conquistas ou importância?",
     options:FREQ5,
-    scale:"FREQ5"
-  },
-  {
-    name:"25",
-    section:"Exploração Interpessoal",
-    type:"radio",
-    text:"Com que frequência você deixa de considerar o impacto das suas atitudes nos outros quando isso atrapalharia seus objetivos?",
-    options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
   {
-    name:"26",
-    section:"Empatia",
+    name:"25",
+    section:"Senso de Direito",
     type:"radio",
-    text:"Com que frequência você tem dificuldade para perceber ou levar a sério os sentimentos e necessidades das outras pessoas?",
+    text:"Você espera receber tratamento especial, prioridade, favores ou concessões mesmo quando a regra é igual para todos?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"26",
+    section:"Senso de Direito",
+    type:"radio",
+    text:"Você se irrita quando outras pessoas não atendem rapidamente suas expectativas, pedidos, necessidades ou preferências?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"27",
-    section:"Empatia",
+    section:"Senso de Direito",
     type:"radio",
-    text:"Com que frequência você considera exagero quando alguém diz que foi ferido por algo que você falou ou fez?",
+    text:"Você sente que merece mais benefícios, tolerância, reconhecimento ou vantagens do que outras pessoas na mesma situação?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"28",
-    section:"Empatia",
+    section:"Senso de Direito",
     type:"radio",
-    text:"Com que frequência você perde a paciência com pessoas que parecem mais frágeis, lentas, sensíveis ou emocionalmente carentes?",
+    text:"Você se incomoda quando precisa esperar, seguir limites, receber negativas ou aceitar regras como qualquer outra pessoa?",
     options:FREQ5,
-    scale:"FREQ5"
-  },
-  {
-    name:"29",
-    section:"Empatia",
-    type:"radio",
-    text:"Com que frequência você sente pouca vontade de se adaptar ao que os outros precisam quando isso contraria seus interesses ou sua imagem?",
-    options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
   {
-    name:"30",
-    section:"Inveja e Comparação",
+    name:"29",
+    section:"Exploração Interpessoal",
     type:"radio",
-    text:"Com que frequência você sente incômodo, inveja ou irritação quando outra pessoa recebe destaque, elogio ou reconhecimento?",
+    text:"Você costuma usar contatos, relações, favores ou a boa vontade de outras pessoas para alcançar seus próprios objetivos?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"30",
+    section:"Exploração Interpessoal",
+    type:"radio",
+    text:"Você se aproxima de algumas pessoas principalmente pelo benefício, status, vantagem, influência ou utilidade que elas podem oferecer?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"31",
-    section:"Inveja e Comparação",
+    section:"Exploração Interpessoal",
     type:"radio",
-    text:"Com que frequência você acredita que outras pessoas têm inveja de você, do seu potencial ou do que você representa?",
+    text:"Você deixa de considerar o impacto das suas atitudes nos outros quando considerar esse impacto atrapalharia seus interesses pessoais?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"32",
-    section:"Inveja e Comparação",
+    section:"Exploração Interpessoal",
     type:"radio",
-    text:"Com que frequência você compara seu valor com o dos outros e precisa sentir que está por cima para ficar em paz?",
+    text:"Alguém já disse que você manipula, usa, explora ou se aproveita das pessoas para conseguir o que quer?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
   {
     name:"33",
-    section:"Arrogância e Postura Interpessoal",
+    section:"Empatia",
     type:"radio",
-    text:"Com que frequência outras pessoas descrevem você como arrogante, convencido, frio ou superior?",
+    text:"Você tem dificuldade para perceber os sentimentos, necessidades ou limites emocionais das outras pessoas?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"34",
-    section:"Arrogância e Postura Interpessoal",
+    section:"Empatia",
     type:"radio",
-    text:"Com que frequência você despreza, desqualifica ou diminui pessoas que considera inferiores, incompetentes ou sem importância?",
+    text:"Você tem dificuldade para levar a sério quando alguém diz que foi magoado, desrespeitado ou ferido por algo que você fez ou falou?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"35",
-    section:"Arrogância e Postura Interpessoal",
+    section:"Empatia",
     type:"radio",
-    text:"Com que frequência você tem dificuldade para admitir erro, pedir desculpas ou reconhecer limites pessoais?",
+    text:"Você costuma considerar exagerada a dor, fragilidade, sensibilidade emocional ou necessidade de apoio das outras pessoas?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
-
   {
     name:"36",
-    section:"Reação a Críticas e Feridas Narcísicas",
+    section:"Empatia",
     type:"radio",
-    text:"Com que frequência você reage com raiva, desprezo, humilhação do outro ou afastamento quando se sente criticado ou desvalorizado?",
+    text:"Você tem dificuldade para mudar sua atitude quando percebe que sua forma de agir está causando sofrimento em alguém?",
     options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"37",
-    section:"Reação a Críticas e Feridas Narcísicas",
+    section:"Empatia",
     type:"radio",
-    text:"Com que frequência pequenas críticas fazem você sentir vergonha intensa, fracasso ou necessidade de provar seu valor imediatamente?",
+    text:"Pessoas próximas já disseram que você não escuta, minimiza, ignora ou desconsidera os sentimentos delas?",
     options:FREQ5,
-    scale:"FREQ5"
-  },
-  {
-    name:"38",
-    section:"Reação a Críticas e Feridas Narcísicas",
-    type:"radio",
-    text:"Com que frequência você tenta recuperar superioridade ou controle depois de se sentir contrariado, ignorado ou diminuído?",
-    options:FREQ5,
-    scale:"FREQ5"
+    scale:"FREQ5",
+    required:true
   },
 
   {
-    name:"39",
-    section:"Relacionamentos",
+    name:"38",
+    section:"Inveja e Comparação",
     type:"radio",
-    text:"Qual é a gravidade do prejuízo que esse jeito de buscar admiração, sentir-se superior ou ter dificuldade com empatia causa nos seus relacionamentos afetivos?",
-    options:SEVER4,
-    scale:"SEVER4"
+    text:"Você sente incômodo, irritação ou inveja quando outra pessoa recebe elogio, destaque, sucesso ou reconhecimento?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"39",
+    section:"Inveja e Comparação",
+    type:"radio",
+    text:"Você acredita que outras pessoas costumam ter inveja de você, do seu potencial, da sua imagem, das suas qualidades ou das suas conquistas?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"40",
-    section:"Relacionamentos",
+    section:"Inveja e Comparação",
     type:"radio",
-    text:"Qual é a gravidade do prejuízo que esse jeito de buscar admiração, sentir-se superior ou ter dificuldade com empatia causa nas suas amizades e convivência social?",
-    options:SEVER4,
-    scale:"SEVER4"
+    text:"Você costuma comparar seu valor pessoal, profissional, intelectual, social ou financeiro com o valor de outras pessoas?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"41",
-    section:"Funcionamento Profissional",
+    section:"Inveja e Comparação",
     type:"radio",
-    text:"Qual é a gravidade do prejuízo que esse jeito de buscar admiração, sentir-se superior ou ter dificuldade com empatia causa no seu trabalho, liderança ou relação com colegas?",
-    options:SEVER4,
-    scale:"SEVER4"
+    text:"Você precisa se sentir acima dos outros em inteligência, competência, aparência, status ou importância para se sentir bem consigo mesmo?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
-
   {
     name:"42",
-    section:"Consciência do Problema",
+    section:"Inveja e Comparação",
     type:"radio",
-    text:"Você reconhece que esse jeito de buscar admiração, sentir-se superior ou ter dificuldade com empatia pode estar causando prejuízos reais na sua vida?",
-    options:YNP,
-    scale:"YNP"
-  },
-  {
-    name:"43",
-    section:"Consciência do Problema",
-    type:"radio",
-    text:"As pessoas próximas já disseram mais de uma vez que você age como se fosse melhor que os outros ou como se os sentimentos delas importassem pouco para você?",
-    options:YNP,
-    scale:"YNP"
+    text:"Você costuma diminuir, desqualificar ou relativizar o sucesso de outras pessoas para não se sentir inferior ou ameaçado?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
 
   {
-    name:"44",
-    section:"Diferencial com Humor",
+    name:"43",
+    section:"Arrogância e Atitudes de Superioridade",
     type:"radio",
-    text:"Essas atitudes de se sentir grandioso, superior ou excepcional aparecem apenas em períodos em que você fica com energia demais, dorme pouco, fala muito e se sente acelerado?",
-    options:YNP,
-    scale:"YNP"
+    text:"As pessoas já disseram que você age de forma arrogante, superior, fria, convencida, autoritária ou difícil de contrariar?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"44",
+    section:"Arrogância e Atitudes de Superioridade",
+    type:"radio",
+    text:"Você costuma desprezar, diminuir ou desqualificar pessoas que considera incompetentes, fracas, ignorantes, inferiores ou pouco importantes?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
   {
     name:"45",
-    section:"Diferencial com Humor",
+    section:"Arrogância e Atitudes de Superioridade",
     type:"radio",
-    text:"Esse jeito de buscar admiração e sentir-se superior continua presente mesmo fora de fases de humor muito elevado ou muito alterado?",
-    options:YNP,
-    scale:"YNP"
+    text:"Você tem dificuldade para admitir que errou quando outra pessoa aponta uma falha sua?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
-
   {
     name:"46",
-    section:"Diferencial com Uso de Substâncias",
+    section:"Arrogância e Atitudes de Superioridade",
     type:"radio",
-    text:"Esse jeito de buscar admiração, sentir-se superior ou agir com pouca empatia começou ou piorou claramente após uso de álcool, drogas, anabolizantes, estimulantes ou outras substâncias?",
-    options:YNP,
-    scale:"YNP"
+    text:"Você tem dificuldade para pedir desculpas de forma sincera quando percebe que prejudicou, magoou ou desrespeitou alguém?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"47",
+    section:"Arrogância e Atitudes de Superioridade",
+    type:"radio",
+    text:"Você reage com desprezo, ironia, frieza, humilhação ou superioridade quando alguém discorda de você ou contraria sua vontade?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
   },
 
   {
-    name:"47",
-    section:"História Familiar",
+    name:"48",
+    section:"Reação a Críticas",
     type:"radio",
-    text:"Há pessoas na sua família com padrão parecido de grandiosidade, necessidade de admiração, arrogância ou pouca consideração pelos sentimentos dos outros?",
+    text:"Você fica com raiva, vergonha, humilhação, ressentimento ou necessidade de defesa quando recebe críticas, correções ou discordâncias?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"49",
+    section:"Reação a Críticas",
+    type:"radio",
+    text:"Você interpreta críticas comuns como ataque pessoal, desvalorização, humilhação ou falta de respeito?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"50",
+    section:"Reação a Críticas",
+    type:"radio",
+    text:"Depois de ser criticado, você sente necessidade de provar que é melhor, mais capaz ou que estava certo?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"51",
+    section:"Reação a Críticas",
+    type:"radio",
+    text:"Você guarda mágoa, rancor, desprezo ou vontade de se vingar depois que alguém critica, corrige ou contraria você?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+
+  {
+    name:"52",
+    section:"Prejuízo Funcional",
+    type:"radio",
+    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou seus relacionamentos amorosos?",
     options:YNP,
-    scale:"YNP"
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"53",
+    section:"Prejuízo Funcional",
+    type:"radio",
+    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou suas amizades ou relações sociais?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"54",
+    section:"Prejuízo Funcional",
+    type:"radio",
+    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou sua relação com familiares?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"55",
+    section:"Prejuízo Funcional",
+    type:"radio",
+    text:"Sua necessidade de admiração, superioridade ou reconhecimento já prejudicou seu trabalho, liderança, equipe ou relação com colegas?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"56",
+    section:"Prejuízo Funcional",
+    type:"radio",
+    text:"Qual é a gravidade do prejuízo causado pela sua necessidade de admiração, superioridade, reconhecimento ou tratamento especial?",
+    options:SEVER4,
+    scale:"SEVER4",
+    required:true
+  },
+
+  {
+    name:"57",
+    section:"Consciência do Problema",
+    type:"radio",
+    text:"Você reconhece que sua necessidade de admiração, superioridade ou reconhecimento pode causar sofrimento para outras pessoas?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"58",
+    section:"Consciência do Problema",
+    type:"radio",
+    text:"Você reconhece que sua necessidade de admiração, superioridade ou reconhecimento pode causar prejuízo para você?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"59",
+    section:"Consciência do Problema",
+    type:"radio",
+    text:"Quando alguém aponta que você foi arrogante, superior, pouco empático ou exigente, você costuma negar, justificar ou minimizar o problema?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+  {
+    name:"60",
+    section:"Consciência do Problema",
+    type:"radio",
+    text:"Quando alguém aponta que você foi arrogante, superior, pouco empático ou exigente, você costuma atacar, desqualificar ou culpar a pessoa?",
+    options:FREQ5,
+    scale:"FREQ5",
+    required:true
+  },
+
+  {
+    name:"61",
+    section:"Diferencial com Humor",
+    type:"radio",
+    text:"Seu sentimento de superioridade aparece apenas em fases nas quais você dorme pouco, fica muito acelerado, fala demais, assume riscos ou tem energia excessiva?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"62",
+    section:"Diferencial com Humor",
+    type:"radio",
+    text:"Seu sentimento de superioridade continua presente mesmo quando seu humor está estável, sem euforia, aceleração, irritabilidade intensa ou redução da necessidade de sono?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"63",
+    section:"Diferencial com Humor",
+    type:"radio",
+    text:"Sua necessidade de admiração continua presente mesmo fora de fases de euforia, irritabilidade intensa, impulsividade aumentada ou aceleração mental?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+
+  {
+    name:"64",
+    section:"Diferencial com Outros Quadros",
+    type:"radio",
+    text:"Suas dificuldades nos relacionamentos são causadas principalmente por medo intenso de abandono, instabilidade emocional e sensação de rejeição?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"65",
+    section:"Diferencial com Outros Quadros",
+    type:"radio",
+    text:"Sua busca por atenção acontece principalmente por dramatização, sedução, teatralidade ou necessidade de ser o centro das situações?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"66",
+    section:"Diferencial com Outros Quadros",
+    type:"radio",
+    text:"Você costuma quebrar regras, enganar pessoas, desrespeitar direitos dos outros ou agir sem culpa desde a adolescência?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"67",
+    section:"Diferencial com Outros Quadros",
+    type:"radio",
+    text:"Sua rigidez com as pessoas vem principalmente de perfeccionismo, controle, ordem, regras e necessidade de que tudo seja feito do seu jeito?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+
+  {
+    name:"68",
+    section:"Substâncias e Condições Médicas",
+    type:"radio",
+    text:"Sua necessidade de admiração, superioridade, impulsividade ou redução de empatia começou ou piorou claramente após uso de álcool, drogas, anabolizantes, estimulantes, antidepressivos, corticoides ou outras substâncias?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"69",
+    section:"Substâncias e Condições Médicas",
+    type:"radio",
+    text:"Sua necessidade de admiração, superioridade, impulsividade ou redução de empatia começou ou piorou claramente após doença neurológica, traumatismo craniano, convulsões, alterações hormonais ou outra condição médica importante?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+
+  {
+    name:"70",
+    section:"Confirmação por Outra Pessoa",
+    type:"radio",
+    text:"Uma pessoa próxima diria que você costuma se sentir superior, mais capaz ou mais importante do que os outros?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"71",
+    section:"Confirmação por Outra Pessoa",
+    type:"radio",
+    text:"Uma pessoa próxima diria que você precisa muito de admiração, elogio, reconhecimento ou tratamento especial?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"72",
+    section:"Confirmação por Outra Pessoa",
+    type:"radio",
+    text:"Uma pessoa próxima diria que você tem dificuldade para considerar os sentimentos, necessidades ou limites dos outros?",
+    options:YNP,
+    scale:"YNP",
+    required:true
+  },
+  {
+    name:"73",
+    section:"Confirmação por Outra Pessoa",
+    type:"radio",
+    text:"Uma pessoa próxima diria que sua necessidade de admiração, superioridade ou reconhecimento causa prejuízo nos seus relacionamentos, trabalho ou família?",
+    options:YNP,
+    scale:"YNP",
+    required:true
   }
 ];
+```
     
 const INDICATORS_CONFIG = {};
 
